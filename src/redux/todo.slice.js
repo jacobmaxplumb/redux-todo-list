@@ -8,7 +8,17 @@ const initialState = {
 const slice = createSlice({
     name: 'todo-list',
     initialState: initialState,
-    reducers: {}
+    reducers: {
+        updateText: (state, action) => {
+            state.text = action.payload
+        },
+        addTodo: (state) => {
+            state.todos = [...state.todos, state.text];
+            state.text = ''
+        }
+    }
 })
 
 export default slice.reducer;
+
+export const { updateText, addTodo } = slice.actions;
